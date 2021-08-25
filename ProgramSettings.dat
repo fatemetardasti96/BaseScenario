@@ -1,0 +1,20 @@
+/*general settings*/
+optimisation_algorithm=cma-es
+simulation_start=
+simulation_end=
+interest_rate=
+use_randomisation=yes
+/*variables for operation simulation*/
+gridbalance_hop_level=2
+operation_algorithm=hsm_total_cost_min
+energy2power_ratio=1h
+operation_sequence_duration=100a
+simulation_step_length=1h
+analysis_hsm_output_detail=yes
+/*penaltiy settigns to influence optimser*/
+penalty_unsupplied_load=5000000.0
+penalty_self_supply_quota=0
+penalty_SQ_lower_limit=0
+penalty_SQ_upper_limit=0
+grid_exchange_ratio=1
+use_global_file = yes
