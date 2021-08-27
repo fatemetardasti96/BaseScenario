@@ -14,6 +14,7 @@ class Technology:
     GEOTHERMAL = 'geothermal'
     NUCLEAR = 'nuclear'
     UNKNOWN = 'unknown'
+    ELECTROLYSER = 'electrolyser'
     
 
 
@@ -40,6 +41,8 @@ class InputEnergy:
     WIND_ONS = 'WIND_ONS'
     WIND_OFF = 'WIND_OFF'
     TRADE_IMPORT = 'TRADE_IMPORT'
+    HYDROGEN = 'hydrogen'
+
 
 def is_renewable(energy):
     RENEWABLE = [InputEnergy.SOLAR, InputEnergy.AIR, InputEnergy.WATER, InputEnergy.WIND_OFF, InputEnergy.WIND_ONS, InputEnergy.TRADE_IMPORT]
@@ -58,6 +61,7 @@ class OutputEnergy:
     H2 = 'H2'
     H2_FC = 'H2_FC'
     HYDRO_ENERGY = 'hydro_energy'
+    HYDROGEN = 'hydrogen'
 
 
 @dataclass
@@ -78,6 +82,8 @@ class TechnologyType:
     HYDROGEN_FUELCELL = 'hydrogen fuelcell'
     HYDROGEN_GAS = 'hydrogen gas'
     TRADE_IMPORT = 'trade import'
+    SALT_CAVERN = 'salt cavern'
+    ALKALINE = 'alkaline'
 
 
 @dataclass
@@ -132,18 +138,19 @@ class Code:
     CH4_CCTURBINE = 'CH4_CCTURBINE'
     CH4_CCTURBINE_CHP = 'CH4_CCTURBINE_CHP'
     H2_ELECTROLYSER = 'H2_ELECTROLYSER'
-    H2_ELECTROLYSER_FC = 'H2_ELECTROLYSER_FC'
+    # H2_ELECTROLYSER_FC = 'H2_ELECTROLYSER_FC'
     GAS_H2 = 'GAS_H2'
     H2 = 'H2'
-    H2_FC = 'H2_FC'
+    # H2_FC = 'H2_FC'
     H2_storage_GASTURBINE = 'H2_storage_gasturbine'
-    H2_storage_FUEL = 'H2_storage_fuel_cell'
-    FUEL_CELL = 'FUEL_CELL'
+    # H2_storage_FUEL = 'H2_storage_fuel_cell'
+    # FUEL_CELL = 'FUEL_CELL'
     BAT1POWER = 'BAT1POWER'
     Battery_Energy_storage = 'Battery_Energy_storage'
     PH_storage = 'PH_storage'
     CCH2_TURBINE = 'CCH2_TURBINE'
     TRANSMISSION_IMPORT = 'TRANSMISSION_IMPORT'
+
 
 
 
@@ -165,13 +172,14 @@ class Converter(Enum):
     PHOTOVOLTAICS = 'photovoltaics'
     WIND_TURBINE = 'wind turbine'
     HYDRO_TURBINE = 'hydro turbine'    
+    ELECTROLYSER = 'electrolyser'
     
 
 class ConverterStorageTech(Enum):
     BATTERY = TechnologyType.BATTERY
     PUMPED = TechnologyType.PUMPED
-    HYDROGEN_GAS = TechnologyType.HYDROGEN_GAS
-    FUEL_CELL = TechnologyType.HYDROGEN_FUELCELL
+    # HYDROGEN_GAS = TechnologyType.HYDROGEN_GAS
+    # FUEL_CELL = TechnologyType.HYDROGEN_FUELCELL
 
 class MultiConverter(Enum):
     GENERATOR = 'generator'
@@ -216,6 +224,7 @@ class StorageEnergy:
     H2 = 'H2'
     H2_FC = 'H2_FC'
     HYDRO_ENERGY = 'hydro_energy'
+    HYDROGEN = 'hydrogen'
 
 
 @dataclass

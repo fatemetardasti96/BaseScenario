@@ -38,9 +38,12 @@ CodeBook = {
             CodeGenerator(Technology.WIND_TURBINE, TechnologyType.OFFSHORE, InputEnergy.AIR).to_str(): Code.WIND_OFF,
             CodeGenerator(Technology.TRANSMISSION, TechnologyType.TRADE_IMPORT, InputEnergy.ELECTRICITY).to_str(): Code.TRANSMISSION_IMPORT,
             CodeGenerator(Technology.STORAGE, TechnologyType.BATTERY, InputEnergy.ELECTRICITY).to_str(): Code.Battery_Energy_storage,
-            CodeGenerator(Technology.STORAGE, TechnologyType.HYDROGEN_GAS, InputEnergy.ELECTRICITY).to_str(): Code.H2_storage_GASTURBINE,
-            CodeGenerator(Technology.STORAGE, TechnologyType.HYDROGEN_FUELCELL, InputEnergy.ELECTRICITY).to_str(): Code.H2_storage_FUEL,
-            CodeGenerator(Technology.STORAGE, TechnologyType.PUMPED, InputEnergy.ELECTRICITY).to_str(): Code.PH_storage
+            # CodeGenerator(Technology.STORAGE, TechnologyType.HYDROGEN_GAS, InputEnergy.ELECTRICITY).to_str(): Code.H2_storage_GASTURBINE,
+            # CodeGenerator(Technology.STORAGE, TechnologyType.HYDROGEN_FUELCELL, InputEnergy.ELECTRICITY).to_str(): Code.H2_storage_FUEL,
+            CodeGenerator(Technology.STORAGE, TechnologyType.PUMPED, InputEnergy.ELECTRICITY).to_str(): Code.PH_storage,
+            CodeGenerator(Technology.ELECTROLYSER, TechnologyType.ALKALINE, InputEnergy.ELECTRICITY).to_str(): Code.H2_ELECTROLYSER,
+            CodeGenerator(Technology.STORAGE, TechnologyType.SALT_CAVERN, InputEnergy.HYDROGEN).to_str(): Code.H2_storage_GASTURBINE,
+            CodeGenerator(Technology.GENERATOR, TechnologyType.GAS, InputEnergy.HYDROGEN).to_str(): Code.CCH2_TURBINE,
 
             }
 
@@ -49,15 +52,17 @@ CodeBook = {
 ConverterStorageCodeBook = {
     TechnologyType.BATTERY: ConverterStorageData(Code.BAT1POWER, InputEnergy.ELECTRIC_ENERGY, OutputEnergy.BATTERY_ENERGY),
     TechnologyType.PUMPED: ConverterStorageData(Code.PH_TURBINE, InputEnergy.ELECTRIC_ENERGY, OutputEnergy.HYDRO_ENERGY),
-    TechnologyType.HYDROGEN_GAS: ConverterStorageData(Code.CCH2_TURBINE, InputEnergy.H2, OutputEnergy.ELECTRIC_ENERGY),
-    TechnologyType.HYDROGEN_FUELCELL: ConverterStorageData(Code.FUEL_CELL, InputEnergy.H2_FC, OutputEnergy.ELECTRIC_ENERGY)
+    # TechnologyType.HYDROGEN_GAS: ConverterStorageData(Code.CCH2_TURBINE, InputEnergy.H2, OutputEnergy.ELECTRIC_ENERGY),
+    # TechnologyType.HYDROGEN_FUELCELL: ConverterStorageData(Code.FUEL_CELL, InputEnergy.H2_FC, OutputEnergy.ELECTRIC_ENERGY)
+
 }
 
 StorageCodeBook = {
     TechnologyType.BATTERY: ConverterStorageData(Code.Battery_Energy_storage, StorageEnergy.BATTERY_ENERGY, StorageEnergy.BATTERY_ENERGY),
-    TechnologyType.HYDROGEN_GAS: ConverterStorageData(Code.H2_storage_GASTURBINE, StorageEnergy.H2, OutputEnergy.H2),
-    TechnologyType.HYDROGEN_FUELCELL: ConverterStorageData(Code.H2_storage_FUEL, StorageEnergy.H2_FC, OutputEnergy.H2_FC),
-    TechnologyType.PUMPED: ConverterStorageData(Code.PH_storage, StorageEnergy.HYDRO_ENERGY, StorageEnergy.HYDRO_ENERGY)
+    # TechnologyType.HYDROGEN_GAS: ConverterStorageData(Code.H2_storage_GASTURBINE, StorageEnergy.H2, OutputEnergy.H2),
+    # TechnologyType.HYDROGEN_FUELCELL: ConverterStorageData(Code.H2_storage_FUEL, StorageEnergy.H2_FC, OutputEnergy.H2_FC),
+    TechnologyType.PUMPED: ConverterStorageData(Code.PH_storage, StorageEnergy.HYDRO_ENERGY, StorageEnergy.HYDRO_ENERGY),
+    TechnologyType.SALT_CAVERN: ConverterStorageData(Code.H2_storage_GASTURBINE, StorageEnergy.HYDROGEN, StorageEnergy.HYDROGEN),
 }
 
 

@@ -33,21 +33,21 @@ def converter_block(technology, technology_type, input_energy, out_energy, year,
     else:
         is_bidirectional = str(False).lower()
 
-    if technology_type == TechnologyType.HYDROGEN_GAS:
-        code = Code.H2_ELECTROLYSER
-        inp_energy = InputEnergy.ELECTRIC_ENERGY
-        out_energy = [OutputEnergy.H2]
-        efficiency = 1
-        total_cost = total_cost*(e2p_ratio[0]/(e2p_ratio[0]+1))/2
-        converter_detail_block(code, inp_energy, out_energy, is_bidirectional, year, efficiency, total_cost, lifetime, OaM_rate, converter_list)
+    # if technology_type == TechnologyType.HYDROGEN_GAS:
+    #     code = Code.H2_ELECTROLYSER
+    #     inp_energy = InputEnergy.ELECTRIC_ENERGY
+    #     out_energy = [OutputEnergy.H2]
+    #     efficiency = 1
+    #     total_cost = total_cost*(e2p_ratio[0]/(e2p_ratio[0]+1))/2
+    #     converter_detail_block(code, inp_energy, out_energy, is_bidirectional, year, efficiency, total_cost, lifetime, OaM_rate, converter_list)
 
-    if technology_type == TechnologyType.HYDROGEN_FUELCELL:
-        code = Code.H2_ELECTROLYSER_FC
-        inp_energy = InputEnergy.ELECTRIC_ENERGY
-        out_energy = [OutputEnergy.H2_FC]
-        efficiency = 1
-        total_cost = total_cost*(e2p_ratio[0]/(e2p_ratio[0]+1))/2
-        converter_detail_block(code, inp_energy, out_energy, is_bidirectional, year, efficiency, total_cost, lifetime, OaM_rate, converter_list)
+    # if technology_type == TechnologyType.HYDROGEN_FUELCELL:
+    #     code = Code.H2_ELECTROLYSER_FC
+    #     inp_energy = InputEnergy.ELECTRIC_ENERGY
+    #     out_energy = [OutputEnergy.H2_FC]
+    #     efficiency = 1
+    #     total_cost = total_cost*(e2p_ratio[0]/(e2p_ratio[0]+1))/2
+    #     converter_detail_block(code, inp_energy, out_energy, is_bidirectional, year, efficiency, total_cost, lifetime, OaM_rate, converter_list)
 
     code = CodeBook[CodeGenerator(technology, technology_type, input_energy).to_str()]
     if technology_type in ConverterStorageCodeBook.keys():
@@ -366,16 +366,17 @@ def region_dir_block(region, year, timeseries, trade_series, outputs_primary_ene
         else:
             continue
         
-        if (tech in [converter.value for converter in Converter] or tech_type=='trade import'):
+        if (tech in [converter.value for converter in Converter] or tech_type=='trade import' or\
+            (tech=='generator' and tech_type==TechnologyType.GAS and input_energy==InputEnergy.HYDROGEN)):
             region_converter_block(region, code, installation, start_date, end_date, region_csv)
 
-        if tech_type == TechnologyType.HYDROGEN_GAS:
-            code = Code.H2_ELECTROLYSER
-            region_converter_block(region, code, installation, start_date, end_date, region_csv)
+        # if tech_type == TechnologyType.HYDROGEN_GAS:
+            # code = Code.H2_ELECTROLYSER
+            # region_converter_block(region, code, installation, start_date, end_date, region_csv)
 
-        if tech_type == TechnologyType.HYDROGEN_FUELCELL:
-            code = Code.H2_ELECTROLYSER_FC
-            region_converter_block(region, code, installation, start_date, end_date, region_csv)
+        # if tech_type == TechnologyType.HYDROGEN_FUELCELL:
+            # code = Code.H2_ELECTROLYSER_FC
+            # region_converter_block(region, code, installation, start_date, end_date, region_csv)
 
 
         if tech_type in ConverterStorageCodeBook.keys():

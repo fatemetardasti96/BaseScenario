@@ -13,7 +13,7 @@ from load_data import *
 from global_co2 import *
 
 
-SCENARIO_ID = 43
+SCENARIO_ID = 58
 
 if __name__ == '__main__':
     
@@ -25,7 +25,6 @@ if __name__ == '__main__':
     
     dump_concrete_db(SCENARIO_ID)
     concrete_data = load_concrete_db(SCENARIO_ID)    
-
 
     if not Path('ID'+str(SCENARIO_ID)).is_dir():
         cwd = 'ID'+str(SCENARIO_ID)
@@ -50,4 +49,3 @@ if __name__ == '__main__':
 
     create_global_co2(concrete_data, cwd)
     create_global(regions_data, cwd)
-    

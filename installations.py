@@ -35,21 +35,21 @@ def installation_dir(data, SCENARIO_ID, cwd):
                 if technology == Technology.STORAGE:
                     if technology_type == TechnologyType.BATTERY:
                         code_name = Code.BAT1POWER
-                    elif technology_type == TechnologyType.HYDROGEN_GAS:
-                        code_name = Code.CCH2_TURBINE
-                    elif technology_type == TechnologyType.HYDROGEN_FUELCELL:
-                        code_name = Code.FUEL_CELL
+                    # elif technology_type == TechnologyType.HYDROGEN_GAS:
+                        # code_name = Code.CCH2_TURBINE
+                    # elif technology_type == TechnologyType.HYDROGEN_FUELCELL:
+                        # code_name = Code.FUEL_CELL
                     elif technology_type == TechnologyType.PUMPED:
                         code_name = Code.PH_TURBINE
                     if code_name not in installation_lists:
                         installation_lists.append(code_name)                        
                         installation_csv[code_name] = []    
-                        if technology_type == TechnologyType.HYDROGEN_GAS:
-                            installation_lists.append(Code.H2_ELECTROLYSER)
-                            installation_csv[Code.H2_ELECTROLYSER] = []
-                        if technology_type == TechnologyType.HYDROGEN_FUELCELL:
-                            installation_lists.append(Code.H2_ELECTROLYSER_FC)
-                            installation_csv[Code.H2_ELECTROLYSER_FC] = []                                    
+                        # if technology_type == TechnologyType.HYDROGEN_GAS:
+                            # installation_lists.append(Code.H2_ELECTROLYSER)
+                            # installation_csv[Code.H2_ELECTROLYSER] = []
+                        # if technology_type == TechnologyType.HYDROGEN_FUELCELL:
+                            # installation_lists.append(Code.H2_ELECTROLYSER_FC)
+                            # installation_csv[Code.H2_ELECTROLYSER_FC] = []                                    
 
                 region_code_installation_value = iterate_mapping(grouped, "\"{}\"[? region == '{}'].value".format(elem, region))[0]
                 name = region + '.' + installation_list_code
@@ -64,10 +64,10 @@ def installation_dir(data, SCENARIO_ID, cwd):
                         # for converter
                         converter_name = region + '.' + code_name
                         installation_list_block(converter_name, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[code_name], year)
-                        if technology_type == TechnologyType.HYDROGEN_GAS:
-                            installation_list_block(region + '.' + Code.H2_ELECTROLYSER, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[Code.H2_ELECTROLYSER], year)
-                        elif technology_type == TechnologyType.HYDROGEN_FUELCELL:
-                            installation_list_block(region + '.' + Code.H2_ELECTROLYSER_FC, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[Code.H2_ELECTROLYSER_FC], year)
+                        # if technology_type == TechnologyType.HYDROGEN_GAS:
+                            # installation_list_block(region + '.' + Code.H2_ELECTROLYSER, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[Code.H2_ELECTROLYSER], year)
+                        # elif technology_type == TechnologyType.HYDROGEN_FUELCELL:
+                            # installation_list_block(region + '.' + Code.H2_ELECTROLYSER_FC, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[Code.H2_ELECTROLYSER_FC], year)
                     else:
                         installation_list_block(name, installed_capacity/1000.0, region_code_installation_value/1000.0, installation_csv[installation_list_code], year)
 

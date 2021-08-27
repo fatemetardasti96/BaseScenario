@@ -74,7 +74,9 @@ def conv_multiconv_storage_transmission_primaries(data, SCENARIO_ID, cwd):
                     OaM_rate = float(fixed_costs)/float(investment_cost * ANF)
                 except:
                     OaM_rate = 0
-                if (technology in [c.value for c in Converter] or technology_type in [t.value for t in ConverterStorageTech] or technology_type==TechnologyType.TRADE_IMPORT):            
+                if (technology in [c.value for c in Converter] or technology_type in [t.value for t in ConverterStorageTech] or\
+                     technology_type==TechnologyType.TRADE_IMPORT or\
+                     (technology==Technology.GENERATOR and technology_type==TechnologyType.GAS and inp_energy==InputEnergy.HYDROGEN)):            
                     logging.info('Converter technology')
                     e2p_ratio = iterate_mapping(grouped, "unique(\"{}\"[? parameter_name == 'E2P ratio' && year == `{}`].value)".format(elem, year))
                     converter_block(technology, technology_type, inp_energy, out_energy, year, efficiency, lifetime, total_cost, OaM_rate, e2p_ratio, converter_list)
